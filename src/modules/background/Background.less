@@ -1,0 +1,25 @@
+/*
+ * temperature-sensor-monitor - https://github.com/blueskyfish/temperature-sensor-monitor.git
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 BlueSkyFish
+ */
+
+@import (reference) "styles/variables";
+@import (reference) "styles/mixins";
+
+.background {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(90,90,90,.4);
+  z-index: 20;
+
+  &.show {
+    display: block;
+  }
+}

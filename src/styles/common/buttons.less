@@ -1,0 +1,99 @@
+/*
+ * temperature-sensor-monitor - https://github.com/blueskyfish/temperature-sensor-monitor.git
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 BlueSkyFish
+ */
+
+
+@import (reference) "styles/variables";
+@import (reference) "styles/mixins";
+
+button {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  line-height: 1;
+}
+
+
+.button {
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: all 0.25s ease-out;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 0;
+  padding: 0.85em 1em;
+  // TODO margin???
+  margin: 0 1rem 1rem 0;
+  font-size: @font-size-normal;
+
+  &.primary {
+    background: @color_primary;
+    color: @color_text_light;
+
+    &:hover,
+    &.focus {
+      background: darken(@color_primary, 8%);
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.icon {
+
+  }
+
+  &.small {
+    font-size: @font-size-small;
+  }
+
+  &.large {
+    font-size: @font-size-large;
+  }
+}
+

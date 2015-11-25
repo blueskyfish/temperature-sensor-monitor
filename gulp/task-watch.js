@@ -16,7 +16,8 @@ var settings = require('./gulp-settings');
 gulp.task('watch', function () {
   gulp.watch(config.index.sources, ['watch-index']);
   gulp.watch(config.styles.sources, ['watch-styles']);
-  gulp.watch(config.scripts.sources, ['watch-scripts']);
+  gulp.watch(config.scripts.sources, ['verify-scripts', 'watch-scripts']);
+  gulp.watch(config.templates.sources, ['watch-templates']);
 });
 
 gulp.task('watch-deploy', function () {

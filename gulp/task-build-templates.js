@@ -10,22 +10,23 @@
 
 var gulp = require('gulp');
 var connect = require('gulp-connect');
-var concat = require('gulp-concat');
 var gif = require('gulp-if');
+var templateCache = require('gulp-angular-templatecache');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
-var config = require('./gulp-config').scripts;
+var config = require('./gulp-config').templates;
 var settings = require('./gulp-settings');
 
-function taskBuildScripts() {
+
+function taskBuildTemplates() {
   return gulp.src(config.sources)
-    .pipe(gif(settings.isDeployment(), concat(config.name)))
+    .pipe(templateCache(config.name, config.options.templates))
     .pipe(gif(settings.isDeployment(), uglify(config.options.uglify)))
     .pipe(gif(settings.isDeployment(), rename(config.minify)))
     .pipe(gulp.dest(settings.getPath(config.dest)))
     .pipe(connect.reload());
 }
 
-gulp.task('build-scripts', ['clean', 'verify-scripts'], taskBuildScripts);
-gulp.task('watch-scripts', taskBuildScripts);
+gulp.task('build-templates', ['clean'], taskBuildTemplates);
+gulp.task('watch-templates', taskBuildTemplates);

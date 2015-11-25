@@ -12,6 +12,8 @@ Table of Content
     * [Requirements](#user-content-requirements)
     * [Components](#user-content-components)
     * [Folder Layout](#user-content-folder-layout)
+* [Concept](#user-content-concept)
+    * [Background Widget](#user-content-background-widget)
 * [License](#user-content-license)
 
 
@@ -35,6 +37,14 @@ The following components are using in the project
 * AngularJS
 * Bootstrap
 * JQuery
+
+```sh
+$ bower install --save jquery
+$ bower install --save bootstrap
+$ bower install --save angular
+$ bower install --save angular-animate
+```
+
 
 ### Folder Layout
 
@@ -61,6 +71,20 @@ The following components are using in the project
 * All basic styles in directory `src/styles`.
 * All Gulp sources in directory `gulp`.
 
+
+Concept
+-------
+
+
+### Background Widget
+
+The background widget is an overlay, that covers up the complete screen. This is for popup oder modal dialogs. If a user
+is clicked on the background, then it send an event `background.click`.
+
+In order for the background will be displayed or hidden, you can use the service `smBackgroundService`.
+You can also register a listener for the click on the Background in this service.
+
+![Background Widget](docs/background-widget.png)
 
 
 License

@@ -14,7 +14,8 @@ gulp.task('build-develop', [
   'clean',
   'build-styles',
   'build-scripts',
-  'build-index'
+  'build-index',
+  'build-templates'
 ]);
 
 
@@ -24,6 +25,7 @@ gulp.task('build-deploy', [
   'build-scripts',
   'build-index',
   'build-assets',
+  'build-templates',
   'build-vendor-scripts',
   'build-vendor-styles',
   'build-vendor-fonts'
