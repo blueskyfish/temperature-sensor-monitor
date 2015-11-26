@@ -81,7 +81,7 @@ Concept
 The background widget is an overlay, that covers up the complete screen. This is for popup oder modal dialogs. If a user
 is clicked on the background, then it send an event `background.click`.
 
-In order for the background will be displayed or hidden, you can use the service `smBackgroundService`.
+In order for the background will be displayed or hidden, you can use the service `tsmBackgroundService`.
 You can also register a listener for the click on the Background in this service.
 
 ![Background Widget](docs/background-widget.png)
