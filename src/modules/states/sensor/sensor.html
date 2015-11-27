@@ -1,4 +1,15 @@
-<section tsm-header="headerTitle"></section>
+<section tsm-header="headerTitle" on-menu="doMenuClick()"></section>
 <main class="content" ng-init="initSensorView()">
   <div ui-view></div>
 </main>
+<dialog show="showDialog">
+  <section class="dialog-title">
+    <h1>Show dialog</h1>
+    <a class="button" ng-click="closeDialog()">&times</a>
+  </section>
+  <p>Body Text</p>
+
+  <section class="dialog-footer">
+    <button class="button primary" ng-click="closeDialog()">Schließen</button>
+  </section>
+</dialog>

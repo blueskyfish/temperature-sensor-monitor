@@ -19,6 +19,16 @@
 
     $scope.headerTitle = 'Temperature Monitor';
 
+    $scope.showDialog = false;
+
+    $scope.doMenuClick = function () {
+      $scope.showDialog = true;
+    };
+
+    $scope.closeDialog = function () {
+      $scope.showDialog = false;
+    };
+
     var cleanUp = tsmBackgroundService.addBackgroundListener(function () {
       console.log('Background clicked...');
     });

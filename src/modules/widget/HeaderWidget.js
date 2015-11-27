@@ -10,7 +10,6 @@
   'use strict';
 
   angular.module('tsm').directive('tsmHeader', [
-    'tsmBackgroundService',
     HeaderWidget
   ]);
 
@@ -20,7 +19,8 @@
       restrict: 'A',
       templateUrl: 'widget/HeaderWidget.html',
       scope: {
-        headerTitle: '=tsmHeader'
+        headerTitle: '=tsmHeader',
+        onMenu: '&'
       },
       link: HeaderWidgetLink
     };
@@ -29,7 +29,9 @@
 
       $scope.menuButtonClick = function () {
         console.log('MenuButtonClick');
-        tsmBackgroundService.showBackground(true);
+        if ($scope.onMenu) {
+          $scope.onMenu();
+        }
       };
     }
   }
