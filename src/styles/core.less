@@ -6,6 +6,9 @@
  * Copyright (c) 2015 BlueSkyFish
  */
 
+@import (reference) "styles/variables";
+@import (reference) "styles/mixins";
+
 html {
   font-size: 16px;
 }
@@ -100,9 +103,23 @@ small {
 }
 
 a {
+  background-color: transparent;
   text-decoration: none;
+  color: @color_primary_dark;
+
+  &:active,
+  &:hover,
+  &:visited {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: lighten(@color_primary_dark, 20%);
+  }
+
+  .inverse {
+    color: @color_text_light;
+  }
 }
 
-a:hover, a:focus, a:visited {
-  text-decoration: none;
-}

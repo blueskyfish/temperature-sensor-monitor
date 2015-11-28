@@ -9,21 +9,19 @@
 (function (angular) {
   'use strict';
 
-  angular.module('tsm').directive('dialog', [
-    '$timeout', 'tsmBackgroundService',
+  angular.module('tsm').directive('tsmDialog', [
+    'tsmBackgroundService',
     DialogWidget
   ]);
 
-  function DialogWidget($timeout, tsmBackgroundService) {
-
-    var TIMEOUT_DIALOG = 200;
+  function DialogWidget(tsmBackgroundService) {
 
     return {
-      restrict: 'E',
+      restrict: 'A',
       replace: true,
       transclude: true,
       scope: {
-        show: '=',
+        show: '=tsmDialog',
         modal: '@',
         className: '@'
       },
@@ -44,14 +42,10 @@
         }
         if (newValue) {
           tsmBackgroundService.showBackground(true);
-          $timeout(function () {
-            dialogBody.addClass('show');
-          }, TIMEOUT_DIALOG);
+          dialogBody.addClass('show');
         } else {
           dialogBody.removeClass('show');
-          $timeout(function () {
-            tsmBackgroundService.showBackground(false);
-          }, TIMEOUT_DIALOG);
+          tsmBackgroundService.showBackground(false);
         }
         tsmBackgroundService.showBackground(newValue);
       });

@@ -10,36 +10,32 @@
   'use strict';
 
   angular.module('tsm').controller('tsmSensorController', [
-    '$scope', '$state', 'tsmBackgroundService',
+    '$scope',
+    '$state',
+    '$timeout',
     SensorController
   ]);
 
 
-  function SensorController($scope, $state, tsmBackgroundService) {
+  function SensorController($scope, $state, $timeout) {
 
     $scope.headerTitle = 'Temperature Monitor';
 
     $scope.showDialog = false;
 
-    $scope.doMenuClick = function () {
-      $scope.showDialog = true;
+    $scope.openSettingDialog = function () {
+      $timeout(function () {
+        $scope.showDialog = true;
+      }, 800);
     };
 
     $scope.closeDialog = function () {
       $scope.showDialog = false;
     };
 
-    var cleanUp = tsmBackgroundService.addBackgroundListener(function () {
-      console.log('Background clicked...');
-    });
-
     $scope.initSensorView = function () {
       $state.go('.list');
     };
-
-    $scope.$on('$destroy', function () {
-      cleanUp();
-    });
   }
 
 } (window.angular));

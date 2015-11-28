@@ -1,15 +1,25 @@
-<section tsm-header="headerTitle" on-menu="doMenuClick()"></section>
+<section tsm-header="headerTitle">
+  <ul class="menu">
+    <li class="menu-item">
+      <a ng-click="openSettingDialog()"><i class="fa fa-cog"></i> Einstellungen</a>
+    </li>
+    <li class="menu-item">
+      <a href="#">Login</a>
+    </li>
+  </ul>
+</section>
 <main class="content" ng-init="initSensorView()">
   <div ui-view></div>
 </main>
-<dialog show="showDialog">
+<section tsm-dialog="showDialog">
   <section class="dialog-title">
-    <h1>Show dialog</h1>
+    <h1>Settings</h1>
     <a class="button" ng-click="closeDialog()">&times</a>
   </section>
-  <p>Body Text</p>
-
+  <section class="dialog-content">
+    <p>This is my Setting Forms</p>
+  </section>
   <section class="dialog-footer">
     <button class="button primary" ng-click="closeDialog()">Schließen</button>
   </section>
-</dialog>
+</section>
