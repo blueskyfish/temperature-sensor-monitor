@@ -26,7 +26,7 @@
     $scope.openSettingDialog = function () {
       $timeout(function () {
         $scope.showDialog = true;
-      }, 800);
+      }, 300);
     };
 
     $scope.closeDialog = function () {

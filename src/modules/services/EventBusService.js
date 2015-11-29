@@ -74,7 +74,7 @@
         $log.error('name of event should be a string and not empty');
         return;
       }
-      $log.debug('send event "%s"', event);
+      $log.debug('[%s] send event "%s"', Date.now(), event);
       var eventList = mEventMap[event] || [];
       var callAsync = asyncCall || true;
 

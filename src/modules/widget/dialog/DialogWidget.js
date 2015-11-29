@@ -10,11 +10,12 @@
   'use strict';
 
   angular.module('tsm').directive('tsmDialog', [
+    '$log',
     'tsmEventBus',
     DialogWidget
   ]);
 
-  function DialogWidget(tsmEventBus) {
+  function DialogWidget($log, tsmEventBus) {
 
     return {
       restrict: 'A',
@@ -40,16 +41,17 @@
         if (newValue === oldValue) {
           return;
         }
+        $log.debug('[%s] dialog visibility is changed (%s)', Date.now(), newValue);
         if (newValue) {
-          tsmEventBus.send('background.show', true);
           dialogBody.addClass('show');
+          tsmEventBus.send('background.show', true);
         } else {
           dialogBody.removeClass('show');
           tsmEventBus.send('background.show', false);
         }
       });
 
-      var cleanUp = tsmEventBus.subscribe('background.click', function (event, data) {
+      var cleanUp = tsmEventBus.subscribe('background.click', function () {
         if (!$scope.modal) {
           $scope.show = false;
         }
