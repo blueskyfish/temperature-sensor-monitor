@@ -10,11 +10,11 @@
   'use strict';
 
   angular.module('tsm').directive('tsmDialog', [
-    'tsmBackgroundService',
+    'tsmEventBus',
     DialogWidget
   ]);
 
-  function DialogWidget(tsmBackgroundService) {
+  function DialogWidget(tsmEventBus) {
 
     return {
       restrict: 'A',
@@ -41,16 +41,15 @@
           return;
         }
         if (newValue) {
-          tsmBackgroundService.showBackground(true);
+          tsmEventBus.send('background.show', true);
           dialogBody.addClass('show');
         } else {
           dialogBody.removeClass('show');
-          tsmBackgroundService.showBackground(false);
+          tsmEventBus.send('background.show', false);
         }
-        tsmBackgroundService.showBackground(newValue);
       });
 
-      var cleanUp = tsmBackgroundService.addBackgroundListener(function () {
+      var cleanUp = tsmEventBus.subscribe('background.click', function (event, data) {
         if (!$scope.modal) {
           $scope.show = false;
         }

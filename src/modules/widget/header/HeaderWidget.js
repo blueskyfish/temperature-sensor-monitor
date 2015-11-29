@@ -10,12 +10,11 @@
   'use strict';
 
   angular.module('tsm').directive('tsmHeader', [
-    '$timeout',
-    'tsmBackgroundService',
+    'tsmEventBus',
     HeaderWidget
   ]);
 
-  function HeaderWidget($timeout, tsmBackgroundService) {
+  function HeaderWidget(tsmEventBus) {
 
     return {
       restrict: 'A',
@@ -51,7 +50,7 @@
         }
         if ($scope.show) {
           // show the menu container
-          tsmBackgroundService.showBackground(true);
+          tsmEventBus.send('background.show', true);
           menuContainerBody
             .addClass('show')
             .find('.menu-item').on('click', closeMenuContainer);
@@ -61,11 +60,11 @@
           menuContainerBody
             .removeClass('show')
             .find('.menu-item').off('click', closeMenuContainer);
-          tsmBackgroundService.showBackground(false);
+          tsmEventBus.send('background.show', false);
         }
       });
 
-      var cleanUp = tsmBackgroundService.addBackgroundListener(closeMenuContainer);
+      var cleanUp = tsmEventBus.subscribe('background.click', closeMenuContainer);
 
       $scope.$on('$destroy', function () {
         cleanUp();

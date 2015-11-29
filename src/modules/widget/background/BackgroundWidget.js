@@ -10,16 +10,16 @@
   'use strict';
 
   angular.module('tsm').directive('background', [
-    '$timeout',
+    'tsmEventBus',
     BackgroundWidget
   ]);
 
-  function BackgroundWidget($timeout) {
+  function BackgroundWidget(tsmEventBus) {
 
     return {
       restrict: 'E',
       scope: true,
-      template: '<div class="background" ng-click="backgroundClick()"></div>',
+      template: '<div class="background" ng-click="backgroundClick($event)"></div>',
       replace: true,
       link: BackgroundWidgetLink
     };
@@ -28,22 +28,22 @@
 
       var elementBackground = angular.element(element);
 
-      $scope.backgroundClick = function () {
-        $timeout(function () {
-          elementBackground.removeClass('show');
-          // send the event **background.click**
-          $scope.$emit('background.click');
-        });
+      $scope.backgroundClick = function (event) {
+        tsmEventBus.send('background.click', event);
       };
 
       // listen on event **background.show**
-      $scope.$on('background.show', function (event, showOrHide) {
+      var cleanUp = tsmEventBus.subscribe('background.show', function (event, showOrHide) {
         if (showOrHide === true) {
           elementBackground.addClass('show');
         }
         else {
           elementBackground.removeClass('show');
         }
+      });
+
+      $scope.$on('$destroy', function () {
+        cleanUp();
       });
     }
   }
