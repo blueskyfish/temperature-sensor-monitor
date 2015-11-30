@@ -23,10 +23,10 @@ gulp.task('connect', ['build-develop'], function () {
     livereload: true,
     middleware: function () {
       return [
-        st({ path: 'bower_components', url: '/bower_components'}),
-        st({ path: 'node_modules', url: '/node_modules'}),
-        st({ path: 'src/modules', url: '/src/modules'}),
-        st({ path: 'app', url: '/app'}),
+        st({ path: 'bower_components', url: '/bower_components', cache: false }),
+        st({ path: 'node_modules', url: '/node_modules', cache: false }),
+        st({ path: 'src/modules', url: '/src/modules', cache: false}),
+        st({ path: 'app', url: '/app', cache: false}),
         modRewrite(config.options.rewriteRules)
       ];
     }
