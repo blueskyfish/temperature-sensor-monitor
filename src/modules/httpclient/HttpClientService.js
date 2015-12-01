@@ -10,7 +10,11 @@
   'use strict';
 
   angular.module('tsm').factory('tsmHttpClient', [
-    '$http', '$q', '$log', 'tsmHttpClientConst', 'tsmUtils',
+    '$http',
+    '$q',
+    '$log',
+    'tsmHttpClientConst',
+    'tsmUtils',
     HttpClientService
   ]);
 

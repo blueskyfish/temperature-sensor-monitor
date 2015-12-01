@@ -21,6 +21,7 @@
       'Content-Type': 'application/json'
     };
 
+    // add Interceptors
     $httpProvider.interceptors.push('tsmHttpClientSessionInterceptor');
 
   }
