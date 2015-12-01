@@ -33,24 +33,30 @@
       var menuContainerBody = angular.element(element).find('.menu-container');
 
       function closeMenuContainer() {
-        $log.debug('[%s] close menu container', Date.now());
-        _showMenu(false);
+        var menuItem = angular.element(this);
+        var notHideBackground = !!menuItem.attr('data-not-hide-background');
+        $log.debug('[%s] close menu container (notHideBackground: %s)', Date.now(), notHideBackground);
+        _showMenu(false, notHideBackground);
       }
 
-      function _showMenu(showOrHide) {
+      function _showMenu(showOrHide, notHideBackground) {
         if (showOrHide === true) {
           $log.debug('[%s] show the menu container', Date.now());
           tsmEventBus.send('background.show', true);
           menuContainerBody
             .addClass('show')
+            .find('.menu-item')
             .on('click', closeMenuContainer);
         }
         else {
           $log.debug('[%s] hide the menu container', Date.now());
           menuContainerBody
             .removeClass('show')
+            .find('.menu-item')
             .off('click', closeMenuContainer);
-          tsmEventBus.send('background.show', false);
+          if (notHideBackground === false) {
+            tsmEventBus.send('background.show', false);
+          }
         }
       }
 

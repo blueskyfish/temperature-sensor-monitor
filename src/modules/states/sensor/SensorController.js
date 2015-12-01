@@ -12,21 +12,18 @@
   angular.module('tsm').controller('tsmSensorController', [
     '$scope',
     '$state',
-    '$timeout',
     SensorController
   ]);
 
 
-  function SensorController($scope, $state, $timeout) {
+  function SensorController($scope, $state) {
 
     $scope.headerTitle = 'Temperature Monitor';
 
     $scope.showDialog = false;
 
     $scope.openSettingDialog = function () {
-      $timeout(function () {
-        $scope.showDialog = true;
-      }, 300);
+      $scope.showDialog = true;
     };
 
     $scope.closeDialog = function () {
