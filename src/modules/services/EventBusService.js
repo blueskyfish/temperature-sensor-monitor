@@ -26,7 +26,7 @@
        *
        * @param {string} event the name of the event
        * @param {function} listener the callback listener
-       * @return {function} the clean up function, that remove from the event list.
+       * @return {function} the clean up function, that removes the listener from the event list.
        */
       subscribe: function (event, listener) {
         return subscribe_(event, listener);
