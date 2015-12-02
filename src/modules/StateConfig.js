@@ -19,10 +19,11 @@
       .state('sensor', {
         url: '/sensor',
         controller: 'tsmSensorController',
-        templateUrl: 'states/sensor/sensor.html'
+        templateUrl: 'states/sensor/SensorController.html'
       })
       .state('sensor.list', {
-        templateUrl: 'src/modules/states/sensor/list/sensor-list.html'
+        templateUrl: 'states/sensor/list/SensorListController.html',
+        controller: 'tsmSensorListController'
       });
   }
 

@@ -175,9 +175,11 @@ module.exports = {
   vendorScripts: {
     sources: [
       'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/sprintf/src/sprintf.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js'
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/sprintf/src/angular-sprintf.js'
     ],
     dest: 'assets/js',
     name: 'vendors.min.js'

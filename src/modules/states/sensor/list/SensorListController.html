@@ -1,0 +1,15 @@
+<section class="container" ng-init="initSensorListView()">
+  <ul class="sensor-list">
+    <li class="sensor-item tile" ng-repeat="item in sensorList">
+      <div class="temperature">
+        <p class="temperature-label">Temperatur</p>
+        <p class="temperature-value">{{ item.temperature | temperature }}</p>
+      </div>
+      <h3 class="title">{{ item.title }}</h3>
+      <div class="humidity">
+        <p class="humidity-label">Feuchtigkeit</p>
+        <p class="humidity-value">{{ item.humidity | humidity }}</p>
+      </div>
+    </li>
+  </ul>
+</section>
