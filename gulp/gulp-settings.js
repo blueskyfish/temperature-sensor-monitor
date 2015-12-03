@@ -8,12 +8,17 @@
 
 'use strict';
 
+var fs = require('fs');
+var path = require('path');
+
 var _ = require('lodash');
 var minimist = require('minimist');
 
 var params = minimist(process.argv.slice(2));
 
 var contextPath = _removePostSlash(_adjustPath(params.contextPath || ''));
+
+var userConfig = null;
 
 module.exports = {
 
@@ -49,6 +54,10 @@ module.exports = {
    */
   getContextPath: function (pathname) {
     return getContextPath_(pathname);
+  },
+
+  getUserConfig: function () {
+    return getUserConfig_();
   }
 };
 
@@ -65,6 +74,25 @@ function getContextPath_(pathname) {
     return contextPath;
   }
   return contextPath + _adjustPath(pathname);
+}
+
+function getUserConfig_() {
+  if (!userConfig) {
+    var userHome = process.env['HOME'] || process.cwd();
+    var filename = path.join(userHome, '.temperature-sensor-monitor.json');
+    if (!fs.existsSync(filename)) {
+      userConfig = {};
+    }
+    else {
+      var context = fs.readFileSync(filename, 'utf8');
+      try {
+        userConfig = JSON.parse(context);
+      } catch (e) {
+        userConfig = {};
+      }
+    }
+  }
+  return userConfig;
 }
 
 

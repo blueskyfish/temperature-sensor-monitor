@@ -10,6 +10,10 @@
 
 var settings = require('./gulp-settings');
 
+var userConfig = settings.getUserConfig();
+
+var proxyDomain = userConfig.proxyDomain || 'http://localhost/temo';
+
 module.exports = {
 
   // Task: connection
@@ -18,7 +22,7 @@ module.exports = {
     port: 4000,
     options: {
       rewriteRules: [
-        '^/temo/(.*)$ http://www.blueskyfish.de/temo/$1 [P]'
+        '^/temo/(.*)$ ' + proxyDomain + '/$1 [P]'
       ]
     }
   },

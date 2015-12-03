@@ -17,6 +17,7 @@ var config = require('./gulp-config').connect;
 var settings = require('./gulp-settings');
 
 gulp.task('connect', ['build-develop'], function () {
+  console.info(JSON.stringify(config.options.rewriteRules, null, 3));
   connect.server({
     root: [settings.getPath()].concat(config.path),
     port: config.port,

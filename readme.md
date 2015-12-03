@@ -71,6 +71,19 @@ $ bower install --save angular-animate
 * All basic styles in directory `src/styles`.
 * All Gulp sources in directory `gulp`.
 
+### Setup Develop Environment
+
+Some Gulp settings are private.
+
+* First: create in your home directory the file `.temperature-sensor-monitor.json`.
+* Second: insert the settings in this file
+
+```json
+{
+  "proxyDomain": "http://example.com/temo"
+}
+```
+
 
 Concept
 -------
