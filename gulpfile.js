@@ -10,7 +10,6 @@
 
 var gulp = require('gulp');
 
-var dateformat = require('dateformat');
 var requireDir = require('require-dir');
 
 var settings = require('./gulp/gulp-settings');

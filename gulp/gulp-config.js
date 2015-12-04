@@ -177,13 +177,14 @@ module.exports = {
   },
 
   vendorScripts: {
+    // always (only) include the minimized version!!
     sources: [
       'bower_components/jquery/dist/jquery.min.js',
-      'bower_components/sprintf/src/sprintf.js',
-      'bower_components/angular/angular.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/sprintf/src/angular-sprintf.js'
+      'bower_components/sprintf/src/sprintf.min.js',
+      'bower_components/angular/angular.min.js',
+      'bower_components/angular-animate/angular-animate.min.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+      'bower_components/sprintf/src/angular-sprintf.min.js'
     ],
     dest: 'assets/js',
     name: 'vendors.min.js'
