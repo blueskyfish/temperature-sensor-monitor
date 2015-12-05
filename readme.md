@@ -27,16 +27,19 @@ The layout of the project is described in this chapter.
 
 The following tools are use for developing and deployment.
 
-* NodeJS
-* Gulp
+* [NodeJS](https://nodejs.org/)
+* [Gulp](http://gulpjs.com/)
+
 
 ### Components
 
 The following components are using in the project
 
-* AngularJS
-* Bootstrap
-* JQuery
+* [AngularJS](https://angularjs.org/)
+* [Angular UI Router](https://github.com/angular-ui/ui-router)
+* [Normalize CSS](https://github.com/necolas/normalize.css/)
+* [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
+* [JQuery](https://jquery.com/)
 
 ```sh
 $ bower install --save jquery
